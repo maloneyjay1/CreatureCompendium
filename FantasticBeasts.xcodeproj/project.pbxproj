@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E60855F21C7A378900EA4636 /* CreatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60855F11C7A378900EA4636 /* CreatureController.swift */; };
+		E60855F41C7A39A300EA4636 /* CreatureLore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60855F31C7A39A300EA4636 /* CreatureLore.swift */; };
+		E60855F61C7A39B200EA4636 /* CreatureImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60855F51C7A39B200EA4636 /* CreatureImage.swift */; };
+		E60855F81C7B96C200EA4636 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60855F71C7B96C200EA4636 /* NetworkController.swift */; };
 		E6AE8AAD1C7913D4004E86D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AAC1C7913D4004E86D5 /* AppDelegate.swift */; };
 		E6AE8AAF1C7913D4004E86D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AAE1C7913D4004E86D5 /* ViewController.swift */; };
 		E6AE8AB21C7913D4004E86D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6AE8AB01C7913D4004E86D5 /* Main.storyboard */; };
@@ -15,6 +19,8 @@
 		E6AE8ABA1C7913D4004E86D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6AE8AB81C7913D4004E86D5 /* LaunchScreen.storyboard */; };
 		E6AE8AC51C7913D4004E86D5 /* FantasticBeastsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AC41C7913D4004E86D5 /* FantasticBeastsTests.swift */; };
 		E6AE8AD01C7913D4004E86D5 /* FantasticBeastsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8ACF1C7913D4004E86D5 /* FantasticBeastsUITests.swift */; };
+		E6AE8AE31C791589004E86D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AE21C791589004E86D5 /* Constants.swift */; };
+		E6AE8AE51C79159D004E86D5 /* CreatureName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AE41C79159D004E86D5 /* CreatureName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E60855F11C7A378900EA4636 /* CreatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureController.swift; sourceTree = "<group>"; };
+		E60855F31C7A39A300EA4636 /* CreatureLore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureLore.swift; sourceTree = "<group>"; };
+		E60855F51C7A39B200EA4636 /* CreatureImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureImage.swift; sourceTree = "<group>"; };
+		E60855F71C7B96C200EA4636 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		E6AE8AA91C7913D4004E86D5 /* FantasticBeasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FantasticBeasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6AE8AAC1C7913D4004E86D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6AE8AAE1C7913D4004E86D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +59,8 @@
 		E6AE8ACB1C7913D4004E86D5 /* FantasticBeastsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FantasticBeastsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6AE8ACF1C7913D4004E86D5 /* FantasticBeastsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FantasticBeastsUITests.swift; sourceTree = "<group>"; };
 		E6AE8AD11C7913D4004E86D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6AE8AE21C791589004E86D5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E6AE8AE41C79159D004E86D5 /* CreatureName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +111,11 @@
 		E6AE8AAB1C7913D4004E86D5 /* FantasticBeasts */ = {
 			isa = PBXGroup;
 			children = (
-				E6AE8AAC1C7913D4004E86D5 /* AppDelegate.swift */,
-				E6AE8AAE1C7913D4004E86D5 /* ViewController.swift */,
-				E6AE8AB01C7913D4004E86D5 /* Main.storyboard */,
-				E6AE8AB61C7913D4004E86D5 /* Assets.xcassets */,
-				E6AE8AB81C7913D4004E86D5 /* LaunchScreen.storyboard */,
-				E6AE8ABB1C7913D4004E86D5 /* Info.plist */,
-				E6AE8AB31C7913D4004E86D5 /* FantasticBeasts.xcdatamodeld */,
+				E6AE8AE11C79155F004E86D5 /* SupportingFiles */,
+				E6AE8AE01C79155A004E86D5 /* Controller */,
+				E6AE8ADF1C791553004E86D5 /* View */,
+				E6AE8ADE1C79154D004E86D5 /* Model */,
+				E6AE8ADD1C791546004E86D5 /* Helpers */,
 			);
 			path = FantasticBeasts;
 			sourceTree = "<group>";
@@ -126,6 +136,54 @@
 				E6AE8AD11C7913D4004E86D5 /* Info.plist */,
 			);
 			path = FantasticBeastsUITests;
+			sourceTree = "<group>";
+		};
+		E6AE8ADD1C791546004E86D5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E6AE8AE21C791589004E86D5 /* Constants.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		E6AE8ADE1C79154D004E86D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E6AE8AE41C79159D004E86D5 /* CreatureName.swift */,
+				E60855F31C7A39A300EA4636 /* CreatureLore.swift */,
+				E60855F51C7A39B200EA4636 /* CreatureImage.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E6AE8ADF1C791553004E86D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E6AE8AAE1C7913D4004E86D5 /* ViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E6AE8AE01C79155A004E86D5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E60855F11C7A378900EA4636 /* CreatureController.swift */,
+				E60855F71C7B96C200EA4636 /* NetworkController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E6AE8AE11C79155F004E86D5 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E6AE8AAC1C7913D4004E86D5 /* AppDelegate.swift */,
+				E6AE8AB61C7913D4004E86D5 /* Assets.xcassets */,
+				E6AE8AB01C7913D4004E86D5 /* Main.storyboard */,
+				E6AE8AB81C7913D4004E86D5 /* LaunchScreen.storyboard */,
+				E6AE8ABB1C7913D4004E86D5 /* Info.plist */,
+				E6AE8AB31C7913D4004E86D5 /* FantasticBeasts.xcdatamodeld */,
+			);
+			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +322,13 @@
 			files = (
 				E6AE8AAF1C7913D4004E86D5 /* ViewController.swift in Sources */,
 				E6AE8AAD1C7913D4004E86D5 /* AppDelegate.swift in Sources */,
+				E60855F81C7B96C200EA4636 /* NetworkController.swift in Sources */,
+				E60855F41C7A39A300EA4636 /* CreatureLore.swift in Sources */,
+				E60855F21C7A378900EA4636 /* CreatureController.swift in Sources */,
 				E6AE8AB51C7913D4004E86D5 /* FantasticBeasts.xcdatamodeld in Sources */,
+				E60855F61C7A39B200EA4636 /* CreatureImage.swift in Sources */,
+				E6AE8AE51C79159D004E86D5 /* CreatureName.swift in Sources */,
+				E6AE8AE31C791589004E86D5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +555,7 @@
 				E6AE8AD61C7913D4004E86D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E6AE8AD71C7913D4004E86D5 /* Build configuration list for PBXNativeTarget "FantasticBeastsTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +564,7 @@
 				E6AE8AD91C7913D4004E86D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E6AE8ADA1C7913D4004E86D5 /* Build configuration list for PBXNativeTarget "FantasticBeastsUITests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +573,7 @@
 				E6AE8ADC1C7913D4004E86D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

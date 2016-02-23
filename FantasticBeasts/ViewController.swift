@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  FantasticBeasts
@@ -9,17 +10,32 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var label: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+        var creatureString:String = ""
+        CreatureController.retrieveCreatureNetworkJSON("Giant") { (resultsData) -> Void in
+            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success) -> Void in
+                for n in LoreArray {
+                    if let text = n["title"] as? String {
+                        if !text.isEmpty {
+                            let appendedString = CreatureController.sharedInstance.stringFormatter("\(text)\n\n")
+                            creatureString += appendedString
+                        }
+                    }
+                }
+                self.textView.text = creatureString
+            })
+        }
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-
