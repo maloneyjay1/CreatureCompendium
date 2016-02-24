@@ -10,9 +10,6 @@ import Foundation
 
 class CreatureName {
     
-    //Initializes directly from network call completion (resultData).
-    //Can also initialize from supplied parameters for user creation of made-up creature.
-    
     private var _cName:String
     
     var cName:String {return _cName}

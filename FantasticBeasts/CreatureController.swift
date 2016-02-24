@@ -24,6 +24,56 @@ class CreatureController {
     var creatureImageJSON = [String:AnyObject]()
     var creatureImageJSONCollection = [[String:AnyObject]]()
     
+    
+    static func creatureLoreArrayForName(searchTerm:String) -> [CreatureLore] {
+        var creatureLoreArray:[CreatureLore] = []
+        CreatureController.retrieveCreatureNetworkJSON("Giant") { (resultsData) -> Void in
+            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success) -> Void in
+                for n in LoreArray {
+                    if let json = n[0] as? jsonDictionary {
+                        if let newCreature = CreatureLore(loreJSON: json) {
+                            creatureLoreArray.append(newCreature)
+                        }
+                    }
+                }
+            })
+        }
+        return creatureLoreArray
+    }
+    
+    
+    static func singleCreatureLoreStringForIndexAndName(searchTerm:String, index:Int, completion:(titleString:String) -> Void) {
+        CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
+            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success) -> Void in
+                if let json = LoreArray[index] as? jsonDictionary {
+                    if let newCreature = CreatureLore(loreJSON: json) {
+                        let titleString = newCreature.cLoreSectionTitle
+                        completion(titleString: titleString)
+                    }
+                }
+            })
+        }
+    }
+    
+    
+    static func allCreatureLoreAsSinglePageForName(searchTerm:String) -> String {
+        var creatureString:String = ""
+        CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
+            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success) -> Void in
+                for n in LoreArray {
+                    if let text = n["title"] as? String {
+                        if !text.isEmpty {
+                            let appendedString = CreatureController.sharedInstance.stringFormatter("\(text)\n\n")
+                            creatureString += appendedString
+                        }
+                    }
+                }
+            })
+        }
+        return creatureString
+    }
+    
+    
     static func retrieveCreatureNetworkJSON(creature:String, completion:(resultsData:jsonDictionary) -> Void) {
         let baseURL = NetworkController.baseCreatureURLForSearch(creature)
         NetworkController.dataAtURL(baseURL) { (resultData, json, success) -> Void in
@@ -56,10 +106,7 @@ class CreatureController {
                                     print("No Lore in this JSON.")
                                     completion(LoreArray: [[:]], success: false)
                                 }
-                            } else {
-                                print("No text found in this JSON.")
-                                completion(LoreArray: [[:]], success: false)
-                            }
+                            } 
                         }
                     } else {
                         print("No content found in this JSON.")

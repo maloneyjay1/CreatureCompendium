@@ -16,21 +16,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        var creatureString:String = ""
-        CreatureController.retrieveCreatureNetworkJSON("Giant") { (resultsData) -> Void in
-            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success) -> Void in
-                for n in LoreArray {
-                    if let text = n["title"] as? String {
-                        if !text.isEmpty {
-                            let appendedString = CreatureController.sharedInstance.stringFormatter("\(text)\n\n")
-                            creatureString += appendedString
-                        }
-                    }
-                }
-                self.textView.text = creatureString
-            })
-        }
+        
         
     }
     
