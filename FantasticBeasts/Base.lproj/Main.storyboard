@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,40 +18,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdG-uz-ouz">
-                                <rect key="frame" x="149" y="109" width="303" height="428"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFT-WF-7zW">
+                                <rect key="frame" x="170" y="20" width="250" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="428" id="EVB-PT-Zeg"/>
-                                    <constraint firstAttribute="width" constant="303" id="mI4-EF-ybB"/>
+                                    <constraint firstAttribute="height" constant="21" id="bwg-Pw-KBd"/>
+                                    <constraint firstAttribute="width" constant="250" id="lOF-Nc-tyv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q7s-43-uXL">
+                                <rect key="frame" x="144" y="49" width="313" height="257"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="313" id="EnS-Pv-YgA"/>
+                                    <constraint firstAttribute="height" constant="257" id="cJf-SC-sUY"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0pu-Io-fjv">
+                                <rect key="frame" x="19" y="379" width="561" height="201"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Creature" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iml-PF-tCc">
-                                <rect key="frame" x="149" y="61" width="303" height="30"/>
-                                <color key="backgroundColor" red="0.32094381309999997" green="0.32094381309999997" blue="0.32094381309999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zan-t4-0ru">
+                                <rect key="frame" x="120" y="333" width="361" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="303" id="21V-7f-Mem"/>
-                                    <constraint firstAttribute="height" constant="30" id="jWx-zX-gSr"/>
+                                    <constraint firstAttribute="width" constant="361" id="Cui-P9-AcS"/>
+                                    <constraint firstAttribute="height" constant="21" id="Snp-xU-hKH"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Iml-PF-tCc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="41" id="3jA-xU-Tkk"/>
-                            <constraint firstItem="Iml-PF-tCc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PN5-w3-FvW"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PdG-uz-ouz" secondAttribute="bottom" constant="63" id="QAo-x5-FIv"/>
-                            <constraint firstItem="PdG-uz-ouz" firstAttribute="top" secondItem="Iml-PF-tCc" secondAttribute="bottom" constant="18" id="t8F-5Y-veQ"/>
-                            <constraint firstItem="PdG-uz-ouz" firstAttribute="centerX" secondItem="Iml-PF-tCc" secondAttribute="centerX" id="yxz-H8-1sD"/>
+                            <constraint firstItem="OFT-WF-7zW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7QV-th-9Cj"/>
+                            <constraint firstItem="Q7s-43-uXL" firstAttribute="centerX" secondItem="OFT-WF-7zW" secondAttribute="centerX" constant="5" id="Ix5-BT-fJL"/>
+                            <constraint firstItem="OFT-WF-7zW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-5" id="OB0-pm-ftG"/>
+                            <constraint firstItem="0pu-Io-fjv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-1" id="PxW-BR-lOd"/>
+                            <constraint firstItem="0pu-Io-fjv" firstAttribute="top" secondItem="Q7s-43-uXL" secondAttribute="bottom" constant="73" id="cPZ-gH-fby"/>
+                            <constraint firstItem="Q7s-43-uXL" firstAttribute="top" secondItem="OFT-WF-7zW" secondAttribute="bottom" constant="8" id="gU0-fe-8I4"/>
+                            <constraint firstItem="0pu-Io-fjv" firstAttribute="top" secondItem="Zan-t4-0ru" secondAttribute="bottom" constant="25" id="lEo-ma-isz"/>
+                            <constraint firstItem="Zan-t4-0ru" firstAttribute="top" secondItem="Q7s-43-uXL" secondAttribute="bottom" constant="27" id="rbE-XX-dDG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0pu-Io-fjv" secondAttribute="trailing" id="tHq-BF-NUL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0pu-Io-fjv" secondAttribute="bottom" constant="20" id="ubf-BO-V0G"/>
+                            <constraint firstItem="Zan-t4-0ru" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xUh-a4-Xjg"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="label" destination="Iml-PF-tCc" id="Kw2-pg-ae1"/>
-                        <outlet property="textView" destination="PdG-uz-ouz" id="IYz-PF-bkc"/>
+                        <outlet property="imageView" destination="Q7s-43-uXL" id="FdC-pe-l5N"/>
+                        <outlet property="lore" destination="0pu-Io-fjv" id="sgu-i7-Z6f"/>
+                        <outlet property="name" destination="OFT-WF-7zW" id="SKz-1B-xhQ"/>
+                        <outlet property="titleLabel" destination="Zan-t4-0ru" id="lVH-ys-RzN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

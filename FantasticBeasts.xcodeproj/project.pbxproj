@@ -11,6 +11,7 @@
 		E60855F41C7A39A300EA4636 /* CreatureLore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60855F31C7A39A300EA4636 /* CreatureLore.swift */; };
 		E60855F61C7A39B200EA4636 /* CreatureImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60855F51C7A39B200EA4636 /* CreatureImage.swift */; };
 		E60855F81C7B96C200EA4636 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60855F71C7B96C200EA4636 /* NetworkController.swift */; };
+		E68720EF1C7E1A7F005E44FE /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68720EE1C7E1A7F005E44FE /* ImageController.swift */; };
 		E6AE8AAD1C7913D4004E86D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AAC1C7913D4004E86D5 /* AppDelegate.swift */; };
 		E6AE8AAF1C7913D4004E86D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AAE1C7913D4004E86D5 /* ViewController.swift */; };
 		E6AE8AB21C7913D4004E86D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6AE8AB01C7913D4004E86D5 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		E60855F31C7A39A300EA4636 /* CreatureLore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureLore.swift; sourceTree = "<group>"; };
 		E60855F51C7A39B200EA4636 /* CreatureImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureImage.swift; sourceTree = "<group>"; };
 		E60855F71C7B96C200EA4636 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		E68720EE1C7E1A7F005E44FE /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		E6AE8AA91C7913D4004E86D5 /* FantasticBeasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FantasticBeasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6AE8AAC1C7913D4004E86D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6AE8AAE1C7913D4004E86D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				E60855F11C7A378900EA4636 /* CreatureController.swift */,
 				E60855F71C7B96C200EA4636 /* NetworkController.swift */,
+				E68720EE1C7E1A7F005E44FE /* ImageController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				E60855F81C7B96C200EA4636 /* NetworkController.swift in Sources */,
 				E60855F41C7A39A300EA4636 /* CreatureLore.swift in Sources */,
 				E60855F21C7A378900EA4636 /* CreatureController.swift in Sources */,
+				E68720EF1C7E1A7F005E44FE /* ImageController.swift in Sources */,
 				E6AE8AB51C7913D4004E86D5 /* FantasticBeasts.xcdatamodeld in Sources */,
 				E60855F61C7A39B200EA4636 /* CreatureImage.swift in Sources */,
 				E6AE8AE51C79159D004E86D5 /* CreatureName.swift in Sources */,

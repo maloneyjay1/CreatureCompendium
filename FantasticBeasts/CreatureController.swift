@@ -25,41 +25,29 @@ class CreatureController {
     var creatureImageJSONCollection = [[String:AnyObject]]()
     
     
-    static func creatureLoreArrayForName(searchTerm:String) -> [CreatureLore] {
-        var creatureLoreArray:[CreatureLore] = []
-        CreatureController.retrieveCreatureNetworkJSON("Giant") { (resultsData) -> Void in
-            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success) -> Void in
-                for n in LoreArray {
-                    if let json = n[0] as? jsonDictionary {
-                        if let newCreature = CreatureLore(loreJSON: json) {
-                            creatureLoreArray.append(newCreature)
+    //successful test
+    static func singleCreatureLoreObjectStringForIndexAndName(searchTerm:String, index:Int, completion:(cLoreSectionTitle:String, cLoreSectionText:String, cCreatureName:String, searchTerm:String) -> Void) {
+        CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
+            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success, name) -> Void in
+                if let json = LoreArray[index] as? jsonDictionary {
+                    if let newCreature = CreatureLore(loreJSON: json) {
+                        let titleString = newCreature.cLoreSectionTitle
+                        let textString = newCreature.cLoreSectionText
+                        if let creatureName = CreatureName(resultData: json) {
+                            completion(cLoreSectionTitle: titleString, cLoreSectionText: textString, cCreatureName: creatureName.cName, searchTerm: searchTerm)
                         }
                     }
                 }
             })
         }
-        return creatureLoreArray
     }
     
     
-    static func singleCreatureLoreStringForIndexAndName(searchTerm:String, index:Int, completion:(titleString:String) -> Void) {
-        CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
-            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success) -> Void in
-                if let json = LoreArray[index] as? jsonDictionary {
-                    if let newCreature = CreatureLore(loreJSON: json) {
-                        let titleString = newCreature.cLoreSectionTitle
-                        completion(titleString: titleString)
-                    }
-                }
-            })
-        }
-    }
     
-    
-    static func allCreatureLoreAsSinglePageForName(searchTerm:String) -> String {
+    static func allCreatureLoreForNameAsString(searchTerm:String, completion:(creatureString:String, name:String) -> Void) {
         var creatureString:String = ""
         CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
-            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success) -> Void in
+            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success, name) -> Void in
                 for n in LoreArray {
                     if let text = n["title"] as? String {
                         if !text.isEmpty {
@@ -68,9 +56,77 @@ class CreatureController {
                         }
                     }
                 }
+                completion(creatureString: creatureString, name: name)
             })
         }
-        return creatureString
+    }
+    
+    
+    //completes with array of lore objects
+    static func creatureLoreObjectArrayForName(searchTerm:String, completion:(creatureLoreArray:[CreatureLore], name:String) -> Void) {
+        var creatureLoreArray:[CreatureLore] = []
+        CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
+            CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success, name) -> Void in
+                for n in LoreArray {
+                    if let json = n as? jsonDictionary {
+                        if let newCreature = CreatureLore(loreJSON: json) {
+                            creatureLoreArray.append(newCreature)
+                            if let creatureName = CreatureName(resultData: json) {
+                                completion(creatureLoreArray: creatureLoreArray, name: creatureName.cName)
+                            }
+                        }
+                    }
+                }
+            })
+        }
+    }
+    
+    
+    static func creatureImageObjectForNameAndIndex(searchTerm:String, index:Int, completion:(creatureImageObject:String) -> Void) {
+        CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
+            CreatureController.sharedInstance.constructImageJSONArray(resultsData, completion: { (ImageJson, ImageArray) -> Void in
+                if index < ImageArray.count {
+                    if let json = ImageArray[index] as? jsonDictionary {
+                        if let newImage = CreatureImage(imageJSON: json) {
+                            let newImageURL = newImage.cImageURL
+                            print(newImageURL)
+                            let imageURL = CreatureController.sharedInstance.urlFormatterForSecurity(newImageURL)
+                            print(imageURL)
+                            completion(creatureImageObject: imageURL)
+                        } else {
+                            print("No Image")
+                            completion(creatureImageObject: "No creature image URL found.")
+                        }
+                    } else {
+                        print("No JSON")
+                        completion(creatureImageObject: "No creature image URL found.")
+                    }
+                } else {
+                    print("Index Out of Range.")
+                    completion(creatureImageObject: "http://atom.smasher.org/error/xp.png.php?icon=skull3&title=ERROR&url=&text=Bummer+dude%2C+looks+like+there%27s+no+image+here.&b1=&b2=&b3=")
+                }
+            })
+        }
+    }
+    
+    
+    //completes with array of image objects
+    static func creatureImageObjectArrayForName(searchTerm:String, completion:(creatureImageArray:[String]) -> Void) {
+        var creatureImageArray:[String] = []
+        CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
+            CreatureController.sharedInstance.constructImageJSONArray(resultsData, completion: { (ImageJson, ImageArray) -> Void in
+                for n in ImageArray {
+                    if let json = n as? jsonDictionary {
+                        if let newImage = CreatureImage(imageJSON: json) {
+                            let imageURL = newImage.cImageURL
+                            let formattedURL = CreatureController.sharedInstance.urlFormatterForSecurity(imageURL)
+                            creatureImageArray.append(formattedURL)
+                        }
+                    }
+                }
+                completion(creatureImageArray: [])
+            })
+        }
     }
     
     
@@ -90,7 +146,10 @@ class CreatureController {
         }
     }
     
-    func constructLoreJSONArray(resultData:jsonDictionary, completion:(LoreArray:jsonArray, success:Bool) -> Void) {
+    
+    //UPDATE TO REMOVE TITLE?
+    func constructLoreJSONArray(resultData:jsonDictionary, completion:(LoreArray:jsonArray, success:Bool, name:String) -> Void) {
+        var nameTitle = String()
         if let sectionsArray = resultData["sections"] as? jsonArray {
             for n in sectionsArray {
                 if let title = n["title"] as? String {
@@ -100,55 +159,68 @@ class CreatureController {
                             if let text = n["text"] as? String {
                                 if !text.isEmpty {
                                     let cText = self.stringFormatter(text)
-                                    creatureLoreJSON.updateValue("\(title): \(cText)", forKey: "title")
+                                    nameTitle = "\(title)"
+                                    print(nameTitle)
+                                    creatureLoreJSON.updateValue("\(cText)", forKey: "text")
+                                    creatureLoreJSON.updateValue("\(title)", forKey: "title")
                                     creatureLoreJSONCollection.append(creatureLoreJSON)
                                 } else {
                                     print("No Lore in this JSON.")
-                                    completion(LoreArray: [[:]], success: false)
+                                    completion(LoreArray: [[:]], success: false, name: "\(title)")
                                 }
-                            } 
+                            }
                         }
                     } else {
                         print("No content found in this JSON.")
-                        completion(LoreArray: [[:]], success: false)
+                        completion(LoreArray: [[:]], success: false, name: "")
                     }
                 } else {
                     print("No title found in this JSON.")
-                    completion(LoreArray: [[:]], success: false)
+                    completion(LoreArray: [[:]], success: false, name:"")
                 }
             }
         } else {
             print("No section found in this JSON.")
-            completion(LoreArray: [[:]], success: false)
+            completion(LoreArray: [[:]], success: false,name:"")
         }
         
-        completion(LoreArray: creatureLoreJSONCollection, success: true)
+        completion(LoreArray: creatureLoreJSONCollection, success: true, name: "\(nameTitle)")
     }
     
     func constructImageJSONArray(resultData:jsonDictionary, completion:(ImageJson:jsonDictionary, ImageArray:jsonArray) -> Void) {
+        
         if let sectionsArray = resultData["sections"] as? jsonArray {
             for n in sectionsArray {
-                if let imageArray = n["images"] as? jsonArray {
-                    for n in imageArray {
-                        print("\(imageArray.count)")
-                        if let url = n["src"] as? String {
-                            if !url.isEmpty {
-                                //change back to caption key
-                                creatureImageJSON = ["src":"\(url):"]
-                                let cURL = self.stringFormatter(url)
-                                creatureImageJSON.updateValue("\(cURL)", forKey: "src")
-                                creatureImageJSONCollection.append(creatureImageJSON)
-                                completion(ImageJson: creatureImageJSON, ImageArray: creatureImageJSONCollection)
+                    if let imageArray = n["images"] as? jsonArray {
+                        for n in imageArray {
+                            print("\(imageArray.count)")
+                            if let url = n["src"] as? String {
+                                if !url.isEmpty {
+                                    creatureImageJSON = ["src":"\(url):"]
+                                    let cURL = self.stringFormatter(url)
+                            
+                                 
+                                    creatureImageJSON.updateValue("\(cURL)", forKey: "src")
+                                    creatureImageJSONCollection.append(creatureImageJSON)
+                                    
+                                }
                             }
                         }
                     }
-                }
             }
         }
+        completion(ImageJson: creatureImageJSON, ImageArray: creatureImageJSONCollection)
     }
+    
 }
 
 extension CreatureController {
+    
+    func urlFormatterForSecurity(string:String) -> String {
+        let secureString:String = string.stringByReplacingOccurrencesOfString("http", withString: "https")
+        return secureString
+    }
+    
     func stringFormatter(string:String) -> String {
         let newString:String = ("\(string) ")
         return newString
