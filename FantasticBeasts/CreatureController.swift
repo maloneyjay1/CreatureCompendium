@@ -46,17 +46,33 @@ class CreatureController {
     
     static func allCreatureLoreForNameAsString(searchTerm:String, completion:(creatureString:String, name:String) -> Void) {
         var creatureString:String = ""
+        var creatureName:String = ""
         CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
             CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success, name) -> Void in
+                var currentTitle:String = ""
+                
                 for n in LoreArray {
-                    if let text = n["title"] as? String {
-                        if !text.isEmpty {
-                            let appendedString = CreatureController.sharedInstance.stringFormatter("\(text)\n\n")
-                            creatureString += appendedString
+                    if let title = n["title"] as? String {
+                        if let text = n["text"] as? String {
+                            if !text.isEmpty {
+                                if title == currentTitle {
+                                    let appendedString = CreatureController.sharedInstance.stringFormatter("\(text)\n\n")
+                                    creatureString += appendedString
+                                } else {
+                                    let appendedString = CreatureController.sharedInstance.stringFormatter("◇  \(title)  ◇\n\n\(text)\n\n")
+                                    creatureString += appendedString
+                                    currentTitle = title
+                                }
+                            }
                         }
                     }
                 }
-                completion(creatureString: creatureString, name: name)
+                if let nameDict = LoreArray[0] as? jsonDictionary {
+                    if let name = nameDict["title"] as? String {
+                        creatureName = name
+                    }
+                }
+                completion(creatureString: creatureString, name: creatureName)
             })
         }
     }
@@ -103,7 +119,7 @@ class CreatureController {
                     }
                 } else {
                     print("Index Out of Range.")
-                    completion(creatureImageObject: "http://atom.smasher.org/error/xp.png.php?icon=skull3&title=ERROR&url=&text=Bummer+dude%2C+looks+like+there%27s+no+image+here.&b1=&b2=&b3=")
+                    completion(creatureImageObject: "http://vignette3.wikia.nocookie.net/harrypotter/images/a/a1/Department_for_the_Regulation_and_Control_of_Magical_Creatures_logo.png/revision/latest?cb=20080319162035")
                 }
             })
         }
@@ -191,22 +207,22 @@ class CreatureController {
         
         if let sectionsArray = resultData["sections"] as? jsonArray {
             for n in sectionsArray {
-                    if let imageArray = n["images"] as? jsonArray {
-                        for n in imageArray {
-                            print("\(imageArray.count)")
-                            if let url = n["src"] as? String {
-                                if !url.isEmpty {
-                                    creatureImageJSON = ["src":"\(url):"]
-                                    let cURL = self.stringFormatter(url)
-                            
-                                 
-                                    creatureImageJSON.updateValue("\(cURL)", forKey: "src")
-                                    creatureImageJSONCollection.append(creatureImageJSON)
-                                    
-                                }
+                if let imageArray = n["images"] as? jsonArray {
+                    for n in imageArray {
+                        print("\(imageArray.count)")
+                        if let url = n["src"] as? String {
+                            if !url.isEmpty {
+                                creatureImageJSON = ["src":"\(url):"]
+                                let cURL = self.stringFormatter(url)
+                                
+                                
+                                creatureImageJSON.updateValue("\(cURL)", forKey: "src")
+                                creatureImageJSONCollection.append(creatureImageJSON)
+                                
                             }
                         }
                     }
+                }
             }
         }
         completion(ImageJson: creatureImageJSON, ImageArray: creatureImageJSONCollection)

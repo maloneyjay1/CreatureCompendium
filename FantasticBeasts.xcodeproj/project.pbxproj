@@ -11,9 +11,22 @@
 		E60855F41C7A39A300EA4636 /* CreatureLore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60855F31C7A39A300EA4636 /* CreatureLore.swift */; };
 		E60855F61C7A39B200EA4636 /* CreatureImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60855F51C7A39B200EA4636 /* CreatureImage.swift */; };
 		E60855F81C7B96C200EA4636 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60855F71C7B96C200EA4636 /* NetworkController.swift */; };
+		E6739B0F1C83BF330085DE9B /* CreatureListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B0E1C83BF330085DE9B /* CreatureListTableViewController.swift */; };
+		E6739B121C83C9760085DE9B /* Cairo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6739B111C83C24B0085DE9B /* Cairo.ttf */; };
+		E6739B141C83DB170085DE9B /* BeastsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B131C83DB170085DE9B /* BeastsTableViewController.swift */; };
+		E6739B161C83DB1F0085DE9B /* BeingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B151C83DB1F0085DE9B /* BeingsTableViewController.swift */; };
+		E6739B181C83DB290085DE9B /* GhostsAndOtherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B171C83DB290085DE9B /* GhostsAndOtherTableViewController.swift */; };
+		E6739B1A1C84E1510085DE9B /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B191C84E1510085DE9B /* Alerts.swift */; };
+		E6739B1C1C84E6DF0085DE9B /* BeastsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B1B1C84E6DF0085DE9B /* BeastsDetailViewController.swift */; };
+		E6739B1E1C84E6EA0085DE9B /* BeingsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B1D1C84E6EA0085DE9B /* BeingsDetailViewController.swift */; };
+		E6739B201C84E6FA0085DE9B /* GhostsOtherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B1F1C84E6FA0085DE9B /* GhostsOtherDetailViewController.swift */; };
+		E6739B221C84EC900085DE9B /* ImageTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B211C84EC900085DE9B /* ImageTestViewController.swift */; };
+		E6739B241C8540EE0085DE9B /* BeastsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B231C8540ED0085DE9B /* BeastsController.swift */; };
+		E6739B261C8540FC0085DE9B /* BeingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B251C8540FC0085DE9B /* BeingsController.swift */; };
+		E6739B281C8541170085DE9B /* GhostsAndOtherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B271C8541170085DE9B /* GhostsAndOtherController.swift */; };
 		E68720EF1C7E1A7F005E44FE /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68720EE1C7E1A7F005E44FE /* ImageController.swift */; };
 		E6AE8AAD1C7913D4004E86D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AAC1C7913D4004E86D5 /* AppDelegate.swift */; };
-		E6AE8AAF1C7913D4004E86D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AAE1C7913D4004E86D5 /* ViewController.swift */; };
+		E6AE8AAF1C7913D4004E86D5 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AAE1C7913D4004E86D5 /* Intro.swift */; };
 		E6AE8AB21C7913D4004E86D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6AE8AB01C7913D4004E86D5 /* Main.storyboard */; };
 		E6AE8AB51C7913D4004E86D5 /* FantasticBeasts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AB31C7913D4004E86D5 /* FantasticBeasts.xcdatamodeld */; };
 		E6AE8AB71C7913D4004E86D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6AE8AB61C7913D4004E86D5 /* Assets.xcassets */; };
@@ -46,10 +59,23 @@
 		E60855F31C7A39A300EA4636 /* CreatureLore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureLore.swift; sourceTree = "<group>"; };
 		E60855F51C7A39B200EA4636 /* CreatureImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureImage.swift; sourceTree = "<group>"; };
 		E60855F71C7B96C200EA4636 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		E6739B0E1C83BF330085DE9B /* CreatureListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureListTableViewController.swift; sourceTree = "<group>"; };
+		E6739B111C83C24B0085DE9B /* Cairo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cairo.ttf; sourceTree = "<group>"; };
+		E6739B131C83DB170085DE9B /* BeastsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeastsTableViewController.swift; sourceTree = "<group>"; };
+		E6739B151C83DB1F0085DE9B /* BeingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeingsTableViewController.swift; sourceTree = "<group>"; };
+		E6739B171C83DB290085DE9B /* GhostsAndOtherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GhostsAndOtherTableViewController.swift; sourceTree = "<group>"; };
+		E6739B191C84E1510085DE9B /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		E6739B1B1C84E6DF0085DE9B /* BeastsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeastsDetailViewController.swift; sourceTree = "<group>"; };
+		E6739B1D1C84E6EA0085DE9B /* BeingsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeingsDetailViewController.swift; sourceTree = "<group>"; };
+		E6739B1F1C84E6FA0085DE9B /* GhostsOtherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GhostsOtherDetailViewController.swift; sourceTree = "<group>"; };
+		E6739B211C84EC900085DE9B /* ImageTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTestViewController.swift; sourceTree = "<group>"; };
+		E6739B231C8540ED0085DE9B /* BeastsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeastsController.swift; sourceTree = "<group>"; };
+		E6739B251C8540FC0085DE9B /* BeingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeingsController.swift; sourceTree = "<group>"; };
+		E6739B271C8541170085DE9B /* GhostsAndOtherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GhostsAndOtherController.swift; sourceTree = "<group>"; };
 		E68720EE1C7E1A7F005E44FE /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		E6AE8AA91C7913D4004E86D5 /* FantasticBeasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FantasticBeasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6AE8AAC1C7913D4004E86D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E6AE8AAE1C7913D4004E86D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E6AE8AAE1C7913D4004E86D5 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		E6AE8AB11C7913D4004E86D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6AE8AB41C7913D4004E86D5 /* FantasticBeasts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FantasticBeasts.xcdatamodel; sourceTree = "<group>"; };
 		E6AE8AB61C7913D4004E86D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E6739B101C83C1FD0085DE9B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E6739B111C83C24B0085DE9B /* Cairo.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		E6AE8AA01C7913D4004E86D5 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +147,7 @@
 		E6AE8AAB1C7913D4004E86D5 /* FantasticBeasts */ = {
 			isa = PBXGroup;
 			children = (
+				E6739B101C83C1FD0085DE9B /* Fonts */,
 				E6AE8AE11C79155F004E86D5 /* SupportingFiles */,
 				E6AE8AE01C79155A004E86D5 /* Controller */,
 				E6AE8ADF1C791553004E86D5 /* View */,
@@ -144,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				E6AE8AE21C791589004E86D5 /* Constants.swift */,
+				E6739B191C84E1510085DE9B /* Alerts.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -161,7 +197,15 @@
 		E6AE8ADF1C791553004E86D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E6AE8AAE1C7913D4004E86D5 /* ViewController.swift */,
+				E6AE8AAE1C7913D4004E86D5 /* Intro.swift */,
+				E6739B0E1C83BF330085DE9B /* CreatureListTableViewController.swift */,
+				E6739B131C83DB170085DE9B /* BeastsTableViewController.swift */,
+				E6739B1B1C84E6DF0085DE9B /* BeastsDetailViewController.swift */,
+				E6739B151C83DB1F0085DE9B /* BeingsTableViewController.swift */,
+				E6739B1D1C84E6EA0085DE9B /* BeingsDetailViewController.swift */,
+				E6739B171C83DB290085DE9B /* GhostsAndOtherTableViewController.swift */,
+				E6739B1F1C84E6FA0085DE9B /* GhostsOtherDetailViewController.swift */,
+				E6739B211C84EC900085DE9B /* ImageTestViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -172,6 +216,9 @@
 				E60855F11C7A378900EA4636 /* CreatureController.swift */,
 				E60855F71C7B96C200EA4636 /* NetworkController.swift */,
 				E68720EE1C7E1A7F005E44FE /* ImageController.swift */,
+				E6739B231C8540ED0085DE9B /* BeastsController.swift */,
+				E6739B251C8540FC0085DE9B /* BeingsController.swift */,
+				E6739B271C8541170085DE9B /* GhostsAndOtherController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -296,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6739B121C83C9760085DE9B /* Cairo.ttf in Resources */,
 				E6AE8ABA1C7913D4004E86D5 /* LaunchScreen.storyboard in Resources */,
 				E6AE8AB71C7913D4004E86D5 /* Assets.xcassets in Resources */,
 				E6AE8AB21C7913D4004E86D5 /* Main.storyboard in Resources */,
@@ -323,16 +371,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6AE8AAF1C7913D4004E86D5 /* ViewController.swift in Sources */,
+				E6AE8AAF1C7913D4004E86D5 /* Intro.swift in Sources */,
+				E6739B1A1C84E1510085DE9B /* Alerts.swift in Sources */,
+				E6739B221C84EC900085DE9B /* ImageTestViewController.swift in Sources */,
 				E6AE8AAD1C7913D4004E86D5 /* AppDelegate.swift in Sources */,
+				E6739B0F1C83BF330085DE9B /* CreatureListTableViewController.swift in Sources */,
+				E6739B141C83DB170085DE9B /* BeastsTableViewController.swift in Sources */,
+				E6739B1E1C84E6EA0085DE9B /* BeingsDetailViewController.swift in Sources */,
 				E60855F81C7B96C200EA4636 /* NetworkController.swift in Sources */,
 				E60855F41C7A39A300EA4636 /* CreatureLore.swift in Sources */,
 				E60855F21C7A378900EA4636 /* CreatureController.swift in Sources */,
 				E68720EF1C7E1A7F005E44FE /* ImageController.swift in Sources */,
+				E6739B201C84E6FA0085DE9B /* GhostsOtherDetailViewController.swift in Sources */,
+				E6739B161C83DB1F0085DE9B /* BeingsTableViewController.swift in Sources */,
 				E6AE8AB51C7913D4004E86D5 /* FantasticBeasts.xcdatamodeld in Sources */,
+				E6739B281C8541170085DE9B /* GhostsAndOtherController.swift in Sources */,
+				E6739B181C83DB290085DE9B /* GhostsAndOtherTableViewController.swift in Sources */,
 				E60855F61C7A39B200EA4636 /* CreatureImage.swift in Sources */,
+				E6739B261C8540FC0085DE9B /* BeingsController.swift in Sources */,
 				E6AE8AE51C79159D004E86D5 /* CreatureName.swift in Sources */,
+				E6739B1C1C84E6DF0085DE9B /* BeastsDetailViewController.swift in Sources */,
 				E6AE8AE31C791589004E86D5 /* Constants.swift in Sources */,
+				E6739B241C8540EE0085DE9B /* BeastsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,7 +536,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FantasticBeasts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = myApp.FantasticBeasts;
+				PRODUCT_BUNDLE_IDENTIFIER = myApp.FantasticBeasts1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -487,7 +547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FantasticBeasts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = myApp.FantasticBeasts;
+				PRODUCT_BUNDLE_IDENTIFIER = myApp.FantasticBeasts1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
