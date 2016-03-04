@@ -2,7 +2,6 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ministry_of_magic_logo_by_kriss80858-d7pimee.png",
       "scale" : "1x"
     },
     {
@@ -11,6 +10,7 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "resizeARROw.png",
       "scale" : "3x"
     }
   ],

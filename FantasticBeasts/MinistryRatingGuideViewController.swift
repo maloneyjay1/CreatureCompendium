@@ -1,29 +1,26 @@
 //
-//  ImageTestViewController.swift
+//  MinistryRatingGuideViewController.swift
 //  FantasticBeasts
 //
-//  Created by Jay Maloney on 2/29/16.
+//  Created by Jay Maloney on 3/1/16.
 //  Copyright © 2016 Jay Maloney. All rights reserved.
 //
 
 import UIKit
 
-class ImageTestViewController: UIViewController {
-
-    @IBOutlet weak var imageTest: UIImageView!
+class MinistryRatingGuideViewController: UIViewController {
     
+    @IBOutlet weak var ratingText: UILabel!
+    
+    let text:String = "X - Boring\n XX - Harmless / may be domesticated\n XXX - Competent wizard should cope\n XXXX - Dangerous / requires specialist knowledge / skilled wizard may handle\n XXXXX - Known wizard killer / impossible to train or domesticate"
+
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        CreatureController.creatureImageObjectArrayForName("Abraxan") { (creatureImageArray) -> Void in
-            print(creatureImageArray)
-        }
+        
+        ratingText.text = text
 
-        CreatureController.creatureImageObjectForNameAndIndex("Abraxan", index: 0) { (creatureImageObject) -> Void in
-            ImageController.sharedInstance.getUIImageFromURL(creatureImageObject, completion: { (image, imageType) -> Void in
-                self.imageTest.image = image
-            })
-        }
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

@@ -14,14 +14,17 @@ class BeastsTableViewController: UITableViewController {
     
     var creatureSelection:String = ""
     
+    var beasts:[String] = []
+    
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        generalAlert(title: "Attention to Employees", message: "\(Constants.sharedInstance.ministryOfMagicUpdate())", actionTitle: "OK")
+        beasts = Constants.sharedInstance.beastNames()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,18 +46,22 @@ class BeastsTableViewController: UITableViewController {
     //    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return Constants.sharedInstance.beastNames().count
+        return beasts.count
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("beastCell", forIndexPath: indexPath)
         
-        let creature = Constants.sharedInstance.beastNames()[indexPath.row]
-        
+        let creature = beasts[indexPath.row]
+    
         cell.textLabel?.text = creature
+        cell.textLabel?.font = UIFont(name: "Cairo", size: 15)
         
+        cell.imageView?.image = UIImage(named: "beastResize")
+        
+        cell.detailTextLabel?.text = "͢"
+
         return cell
     }
     
@@ -98,15 +105,24 @@ class BeastsTableViewController: UITableViewController {
         let indexPath = tableView.indexPathForSelectedRow
         
         if let selectedRow = indexPath?.row {
-            self.creatureSelection = Constants.sharedInstance.beastNames()[selectedRow]
-            
-            BeastsController.sharedInstance.retrieveAllLoreAndName(creatureSelection, completion: { (success) -> Void in
-                if success {
-                    
-                    BeastsDetailViewController.sharedInstance.updateProps()
-                    self.performSegueWithIdentifier("toBeastDetail", sender: self)
-                }
-            })
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                self.creatureSelection = Constants.sharedInstance.beastNames()[selectedRow]
+                
+                BeastsController.sharedInstance.retrieveAllLoreAndName(self.creatureSelection, completion: { (success) -> Void in
+                    BeastsController.sharedInstance.retrieveImage(self.creatureSelection, index: 0, completion: { (success) -> Void in
+                        if success {
+                            if success {
+                                BeastsDetailViewController.sharedInstance.updateProps({ (success) -> Void in
+                                    if success {
+                                        self.performSegueWithIdentifier("toBeastDetail", sender: self)
+                                    }
+                                })
+                            }
+                        }
+                    })
+                })
+            }
         }
     }
     
@@ -125,6 +141,7 @@ class BeastsTableViewController: UITableViewController {
                 if let selectedRow = indexPath?.row {
                     
                     self.creatureSelection = Constants.sharedInstance.beastNames()[selectedRow]
+                    BeastsController.sharedInstance.creatureIndex = selectedRow
                     
                 }
             }

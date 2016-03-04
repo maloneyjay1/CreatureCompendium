@@ -24,6 +24,7 @@
 		E6739B241C8540EE0085DE9B /* BeastsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B231C8540ED0085DE9B /* BeastsController.swift */; };
 		E6739B261C8540FC0085DE9B /* BeingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B251C8540FC0085DE9B /* BeingsController.swift */; };
 		E6739B281C8541170085DE9B /* GhostsAndOtherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B271C8541170085DE9B /* GhostsAndOtherController.swift */; };
+		E6739B2A1C86383A0085DE9B /* MinistryRatingGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B291C86383A0085DE9B /* MinistryRatingGuideViewController.swift */; };
 		E68720EF1C7E1A7F005E44FE /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68720EE1C7E1A7F005E44FE /* ImageController.swift */; };
 		E6AE8AAD1C7913D4004E86D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AAC1C7913D4004E86D5 /* AppDelegate.swift */; };
 		E6AE8AAF1C7913D4004E86D5 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE8AAE1C7913D4004E86D5 /* Intro.swift */; };
@@ -72,6 +73,7 @@
 		E6739B231C8540ED0085DE9B /* BeastsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeastsController.swift; sourceTree = "<group>"; };
 		E6739B251C8540FC0085DE9B /* BeingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeingsController.swift; sourceTree = "<group>"; };
 		E6739B271C8541170085DE9B /* GhostsAndOtherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GhostsAndOtherController.swift; sourceTree = "<group>"; };
+		E6739B291C86383A0085DE9B /* MinistryRatingGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryRatingGuideViewController.swift; sourceTree = "<group>"; };
 		E68720EE1C7E1A7F005E44FE /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		E6AE8AA91C7913D4004E86D5 /* FantasticBeasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FantasticBeasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6AE8AAC1C7913D4004E86D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				E6739B171C83DB290085DE9B /* GhostsAndOtherTableViewController.swift */,
 				E6739B1F1C84E6FA0085DE9B /* GhostsOtherDetailViewController.swift */,
 				E6739B211C84EC900085DE9B /* ImageTestViewController.swift */,
+				E6739B291C86383A0085DE9B /* MinistryRatingGuideViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				E6739B1C1C84E6DF0085DE9B /* BeastsDetailViewController.swift in Sources */,
 				E6AE8AE31C791589004E86D5 /* Constants.swift in Sources */,
 				E6739B241C8540EE0085DE9B /* BeastsController.swift in Sources */,
+				E6739B2A1C86383A0085DE9B /* MinistryRatingGuideViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

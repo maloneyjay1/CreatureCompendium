@@ -18,6 +18,8 @@ class Intro: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        generalAlert(title: "Attention to Employees", message: "\(Constants.sharedInstance.ministryOfMagicUpdate())", actionTitle: "OK")
+        
         TextView.text = "\(Constants.sharedInstance.ministryOfMagicGreeting())\(Constants.sharedInstance.ministryOfMagicWarning())\n\n\(Constants.sharedInstance.ministryOfMagicInstructions())\n\n\(Constants.sharedInstance.ministryOfMagicNewEmployeeNote())"
         
         TextView.contentOffset = CGPointMake(0, -TextView.contentSize.height)

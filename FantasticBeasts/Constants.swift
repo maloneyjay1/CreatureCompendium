@@ -16,10 +16,17 @@ class Constants {
     static let sharedInstance = Constants()
     
     func beastNames() -> [String] {
-        return ["Abraxan", "Acromantula", "Aethonan", "Antipodean Opaleye", "Billywig", "Blibbering Humdinger", "Bowtruckle", "Centaur", "Chameleon Ghoul", "Chinese Fireball", "Common Welsh Green", "Crumple-Horned Snorkack", "Demiguise", "Doxy", "Dragon", "Erkling", "Fairy", "Flesh-Eating Slug", "Flobberworm", "Ghoul", "Giant Squid", "Glumbumble", "Golden Snidget", "Granian", "Griffin", "Grindylow", "Hebridean Black", "Heliopath", "Hippogriff", "Hungarian Horntail", "Imp", "Jarvey", "Kappa", "Kneazle", "Leprechaun", "Mackled Malaclaw", "Merpeople", "Moke", "Nargle", "Niffler", "Norwegian Ridgeback", "Occamy", "Owl", "Peruvian Salamander", "Peruvian Vipertooth", "Pixie", "Phoenix", "Puffskein", "Pygmy Puff", "Quintaped", "Ramora", "Romanian Longhorn", "Salamander", "Sphinx", "Swedish Short-Snout", "Tadfoal", "Thestral", "Three-Headed Dog", "Troll", "Ukrainian Ironbelly", "Unicorn", "Vampyr Mosp", "Werewolf", "Wood Nymph", "Winged Horse", "Wrackspurt", "Yeti"]
+        return ["Abraxan", "Acromantula", "Aethonan", "Antipodean Opaleye", "Ashwinder", "Billywig", "Blibbering Humdinger", "Bowtruckle", "Centaur", "Chameleon Ghoul", "Chinese Fireball", "Common Welsh Green", "Crumple-Horned Snorkack", "Demiguise", "Diricawl", "Doxy", "Dragon", "Erkling", "Fairy", "Firecrab", "Flesh-Eating Slug", "Flobberworm", "Ghoul", "Giant Squid", "Glumbumble", "Golden Snidget", "Granian", "Griffin", "Grindylow", "Hebridean Black", "Heliopath", "Hippogriff", "Hungarian Horntail", "Imp", "Jarvey", "Jobberknoll", "Kappa", "Kneazle", "Leprechaun", "Lethifold", "Mackled Malaclaw", "Merpeople", "Moke", "Nargle", "Niffler", "Norwegian Ridgeback", "Nundu", "Occamy", "Owl", "Peruvian Salamander", "Peruvian Vipertooth", "Pixie", "Phoenix", "Pogrebin", "Puffskein", "Pygmy Puff", "Quintaped", "Ramora", "Romanian Longhorn", "Salamander", "Sphinx", "Swedish Short-Snout", "Streeler", "Tadfoal", "Thestral", "Three-Headed Dog", "Troll", "Ukrainian Ironbelly", "Unicorn", "Vampyr Mosp", "Werewolf", "Wood Nymph", "Winged Horse", "Wrackspurt", "Yeti"]
     }
     
-
+    func beastRatingForIndex(currentIndex:Int) -> String {
+        print("\(currentIndex)")
+        return beastRatings()[currentIndex]
+    }
+    
+    func beastRatings() -> [String] {
+        return ["XXXX", "XXXXX - known wizard killer", "XX - XXXX",  "XXXXX", "XXX", "XX", "XXXX", "XX chameleon ghoul", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""  ]
+    }
     
     func beastImageIndex(beast:String) -> Int {
         switch (beast) {
@@ -34,8 +41,26 @@ class Constants {
         return ["Being", "Dwarf", "Giant", "Goblin", "Hag", "Vampire", "Veela", "Werewolf"]
     }
     
+    func beingImageIndex(being:String) -> Int {
+        switch (being) {
+        case let x where x == "Being":
+            return 0
+        default:
+            return 0
+        }
+    }
+    
     func ghostsNonBeingAndUnknownNames() -> [String] {
-        return ["Banshee", "Bicorn", "Deathday Party", "Cockatrice", "Cuthbert Binns", "Edgar Cloggs", "Patrick Delaney-Podmore", "Fat Friar", "Ghost", "Headless Hunt", "Nicholas de Mimsy-Porpington's five-hundredth Deathday Party", "Ogre", "Phantom Rat", "Helena Ravenclaw", "The Toad", "Unidentified ghost horse (I)", "Wailing Widow", "Boggart", "Dementor", "Poltergeist"]
+        return ["Banshee", "Bicorn", "Boggart", "Cockatrice", "Cuthbert Binns", "Deathday Party", "Dementor", "Edgar Cloggs", "Fat Friar", "Ghost", "Headless Hunt", "Nicholas de Mimsy-Porpington's five-hundredth Deathday Party", "Ogre", "Patrick Delaney-Podmore", "Phantom Rat", "Poltergeist", "Helena Ravenclaw", "The Toad", "Unidentified ghost horse (I)", "Wailing Widow"]
+    }
+    
+    func ghostImageIndex(ghost:String) -> Int {
+        switch (ghost) {
+        case let x where x == "Banshee":
+            return 0
+        default:
+            return 0
+        }
     }
     
     func ministryOfMagicGreeting() -> String {
@@ -43,11 +68,11 @@ class Constants {
     }
     
     func ministryOfMagicWarning() -> String {
-        return "Use of this application by non Ministry of Magic personnel will result in the immediate removal from duties and position(s) therein, as well as be subject to an Obliviate charm for security.\n\n Please report any and all unauthorized usage and direct your relevant inquiries to the Muggle Technology Integration Support Service within your respective creature division.\n\n Beasts: Demeter VanHoorn\n Beings: Helena Pilliwickle\n Spirits and Non-Beings: Donaghan Pomfrey\n▼\n"
+        return "Use of this application by non Ministry of Magic personnel will result in the immediate removal from any and all Ministry duties and position(s), as well as be made subject to a lasting Obliviate charm.\n\n Please report any and all unauthorized usage and direct your relevant inquiries to the Muggle Technology Integration Support Service within your respective creature division.\n\n Beasts: Demeter VanHoorn\n Beings: Helena Pilliwickle\n Spirits and Non-Beings: Donaghan Pomfrey\n▼\n"
     }
     
     func ministryOfMagicInstructions() -> String {
-        return "In accordance with Clause 73 of the International Code of Wizarding Secrecy, which states: 'Each wizarding governing body will be responsible for the concealment, care, and control of all magical beasts, beings, and spirits dwelling within its territory's borders. Should any such creature cause harm to, or draw the notice of, the Muggle community, that nation's wizarding governing body will be subject to discipline by the International Confederation of Wizards,' your duties include but are not limited to the following;\n investigate complaints regarding any and all magical creatures within jurisdiction, direct relevant action to division task force when necessary (complaints regarding class XXXXX creatures or known Wizard-killers are NOT to be processed alone, and must be directed through the respective sub-division removal unit).  Employees attached to endangered-status sub-divisions will also be expected to carry out relevant breeding documentation and regulatory affairs therein.\n▼\n"
+        return "In accordance with Clause 73 of the International Code of Wizarding Secrecy, which states: 'Each wizarding governing body will be responsible for the concealment, care, and control of all magical beasts, beings, and spirits dwelling within its territory's borders.\n\nShould any such creature cause harm to, or draw the notice of, the Muggle community, that nation's wizarding governing body will be subject to discipline by the International Confederation of Wizards.'\n\nYour duties include but are not limited to the following;\n investigate complaints regarding any and all magical creatures within jurisdiction, direct relevant action to division task force when necessary.  Employees attached to endangered-status sub-divisions will also be expected to carry out relevant breeding documentation and regulatory affairs therein.\n▼\n"
     }
     
     func ministryOfMagicNewEmployeeNote() -> String {

@@ -9,9 +9,18 @@
 import UIKit
 
 class BeingsTableViewController: UITableViewController {
-
+    
+    static let sharedInstance = BeingsTableViewController()
+    
+    var creatureSelection:String = ""
+    
+    var beings:[String] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        beings = Constants.sharedInstance.beingNames()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -44,6 +53,11 @@ class BeingsTableViewController: UITableViewController {
         let creature = Constants.sharedInstance.beingNames()[indexPath.row]
         
         cell.textLabel?.text = creature
+        cell.textLabel?.font = UIFont(name: "Cairo", size: 15)
+        
+        cell.detailTextLabel?.text = "͢"
+        
+        cell.imageView?.image = UIImage(named: "vampResize")
 
         return cell
     }
@@ -83,14 +97,39 @@ class BeingsTableViewController: UITableViewController {
         return true
     }
     */
-
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow
+        
+        if let selectedRow = indexPath?.row {
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                self.creatureSelection = Constants.sharedInstance.beingNames()[selectedRow]
+                
+                BeingController.sharedInstance.retrieveAllLoreAndName(self.creatureSelection, completion: { (success) -> Void in
+                    BeingController.sharedInstance.retrieveImage(self.creatureSelection, index: 0, completion: { (success) -> Void in
+                        if success {
+                            if success {
+                                BeingsDetailViewController.sharedInstance.updateProps({ (success) -> Void in
+                                    if success {
+                                        self.performSegueWithIdentifier("toBeingDetail", sender: self)
+                                    }
+                                })
+                            }
+                        }
+                    })
+                })
+            }
+        }
+    }
+
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        
     }
     
 

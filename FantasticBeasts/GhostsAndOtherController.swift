@@ -7,3 +7,49 @@
 //
 
 import Foundation
+import UIKit
+
+class GhostsAndOtherController {
+    
+    static let sharedInstance = GhostsAndOtherController()
+    
+    var creatureIndex = Int()
+    
+    var ghostLore:String = ""
+    var ghostName:String = ""
+    var ghostImage = UIImage()
+    
+    func clearData() {
+        self.ghostName = ""
+        self.ghostLore = ""
+    }
+    
+    func retrieveAllLoreAndName(searchTerm:String, completion:(success:Bool) -> Void) {
+        dispatch_async(dispatch_get_main_queue()) {
+            CreatureController.allCreatureLoreForNameAsString(searchTerm) { (creatureString, name) -> Void in
+                self.ghostLore = ""
+                print(self.ghostLore)
+                self.ghostName = ""
+                print(self.ghostName)
+                self.ghostImage = UIImage()
+                
+                self.ghostLore = creatureString
+                print(self.ghostLore)
+                self.ghostName = searchTerm
+                print(self.ghostName)
+                completion(success: true)
+            }
+        }
+    }
+    
+    func retrieveImage(searchTerm:String, index:Int, completion:(success:Bool) -> Void) {
+        //create image object
+        CreatureController.creatureImageObjectForNameAndIndex(searchTerm, index: index) { (creatureImageObject) -> Void in
+            ImageController.sharedInstance.getUIImageFromURL(creatureImageObject, completion: { (image, imageType) -> Void in
+                self.ghostImage = image
+                completion(success: true)
+            })
+        }
+    }
+}
+
