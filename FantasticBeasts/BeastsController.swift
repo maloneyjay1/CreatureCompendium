@@ -44,10 +44,15 @@ class BeastsController {
     
     func retrieveImage(searchTerm:String, index:Int, completion:(success:Bool) -> Void) {
         //create image object
-        CreatureController.creatureImageObjectForNameAndIndex(searchTerm, index: index) { (creatureImageObject) -> Void in
-            ImageController.sharedInstance.getUIImageFromURL(creatureImageObject, completion: { (image, imageType) -> Void in
-                self.beastImage = image
-                completion(success: true)
+        CreatureController.creatureImageURLForNameAndIndex(searchTerm, index: index) { (creatureImageObject) -> Void in
+            ImageController.sharedInstance.getUIImageFromURL(creatureImageObject, completion: { (image, imageType, success) -> Void in
+                if success {
+                    self.beastImage = image
+                    completion(success: true)
+                } else {
+                    print("No Image.")
+                    completion(success: false)
+                }
             })
         }
         

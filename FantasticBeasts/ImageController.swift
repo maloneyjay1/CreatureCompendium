@@ -14,7 +14,44 @@ class ImageController {
     
     static let sharedInstance = ImageController()
     
-    func getUIImageFromURL(url:String, completion:(image:UIImage, imageType:String) -> Void) {
+    var creatureImageArray = [UIImage]()
+    
+    func returnImageArrayForCreature(searchTerm:String, completion:(images:[UIImage]) ->Void)
+    {
+        self.creatureImageArray.removeAll()
+        CreatureController.sharedInstance.creatureImageUrlArrayForName(searchTerm) { (creatureImageUrlArray, success) -> Void in
+            
+            if success {
+                print("\(creatureImageUrlArray.count)")
+                for n in creatureImageUrlArray {
+                    
+                    ImageController.sharedInstance.getUIImageFromURL(n, completion: { (image, imageType, success) -> Void in
+                        if success {
+                            let currentImage = UIImage()
+                            print("\(image)")
+                            if currentImage == image {
+                                print(currentImage)
+                                completion(images: self.creatureImageArray)
+                            } else {
+                                self.creatureImageArray.append(image)
+                                print("creatureImage array appended")
+                                completion(images: self.creatureImageArray)
+                            }
+                            
+                        } else {
+                            print("No image to append.")
+                            completion(images: [])
+                        }
+                    })
+                }
+            } else {
+                completion(images: self.creatureImageArray)
+            }
+        }
+    }
+    
+    
+    func getUIImageFromURL(url:String, completion:(image:UIImage, imageType:String, success:Bool) -> Void) {
         if let nsurl = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
             
             if let imageNSURL = NSURL(string: nsurl) {
@@ -24,23 +61,31 @@ class ImageController {
                         if let data = resultData {
                             dispatch_async(dispatch_get_main_queue()) {
                                 guard let image = UIImage.gifWithData(data) where success else {return}
-                                completion(image: image, imageType: "\(self.getDataType(resultData!))")
+                                completion(image: image, imageType: "\(self.getDataType(resultData!))", success: true)
                             }
+                        } else {
+                            print("No data")
+                            completion(image: UIImage(), imageType: "No type found", success: true)
                         }
                     } else {
                         if let data = resultData {
                             dispatch_async(dispatch_get_main_queue()) {
                                 guard let image = UIImage(data: data) where success else {return}
-                                completion(image: image, imageType: "\(self.getDataType(resultData!))")
+                                completion(image: image, imageType: "\(self.getDataType(resultData!))", success: true)
                             }
+                        } else {
+                            print("No data")
+                            completion(image: UIImage(), imageType: "", success: true)
                         }
                     }
                 })
             } else {
                 print("Unable to create image NSURL.")
+                completion(image: UIImage(), imageType: "", success: true)
             }
         } else {
             print("Unable to encode url String.")
+            completion(image: UIImage(), imageType: "", success: true)
         }
     }
 }

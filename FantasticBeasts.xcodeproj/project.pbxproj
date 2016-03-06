@@ -20,7 +20,6 @@
 		E6739B1C1C84E6DF0085DE9B /* BeastsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B1B1C84E6DF0085DE9B /* BeastsDetailViewController.swift */; };
 		E6739B1E1C84E6EA0085DE9B /* BeingsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B1D1C84E6EA0085DE9B /* BeingsDetailViewController.swift */; };
 		E6739B201C84E6FA0085DE9B /* GhostsOtherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B1F1C84E6FA0085DE9B /* GhostsOtherDetailViewController.swift */; };
-		E6739B221C84EC900085DE9B /* ImageTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B211C84EC900085DE9B /* ImageTestViewController.swift */; };
 		E6739B241C8540EE0085DE9B /* BeastsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B231C8540ED0085DE9B /* BeastsController.swift */; };
 		E6739B261C8540FC0085DE9B /* BeingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B251C8540FC0085DE9B /* BeingsController.swift */; };
 		E6739B281C8541170085DE9B /* GhostsAndOtherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6739B271C8541170085DE9B /* GhostsAndOtherController.swift */; };
@@ -69,7 +68,6 @@
 		E6739B1B1C84E6DF0085DE9B /* BeastsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeastsDetailViewController.swift; sourceTree = "<group>"; };
 		E6739B1D1C84E6EA0085DE9B /* BeingsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeingsDetailViewController.swift; sourceTree = "<group>"; };
 		E6739B1F1C84E6FA0085DE9B /* GhostsOtherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GhostsOtherDetailViewController.swift; sourceTree = "<group>"; };
-		E6739B211C84EC900085DE9B /* ImageTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTestViewController.swift; sourceTree = "<group>"; };
 		E6739B231C8540ED0085DE9B /* BeastsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeastsController.swift; sourceTree = "<group>"; };
 		E6739B251C8540FC0085DE9B /* BeingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeingsController.swift; sourceTree = "<group>"; };
 		E6739B271C8541170085DE9B /* GhostsAndOtherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GhostsAndOtherController.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 				E6739B1D1C84E6EA0085DE9B /* BeingsDetailViewController.swift */,
 				E6739B171C83DB290085DE9B /* GhostsAndOtherTableViewController.swift */,
 				E6739B1F1C84E6FA0085DE9B /* GhostsOtherDetailViewController.swift */,
-				E6739B211C84EC900085DE9B /* ImageTestViewController.swift */,
 				E6739B291C86383A0085DE9B /* MinistryRatingGuideViewController.swift */,
 			);
 			name = View;
@@ -376,7 +373,6 @@
 			files = (
 				E6AE8AAF1C7913D4004E86D5 /* Intro.swift in Sources */,
 				E6739B1A1C84E1510085DE9B /* Alerts.swift in Sources */,
-				E6739B221C84EC900085DE9B /* ImageTestViewController.swift in Sources */,
 				E6AE8AAD1C7913D4004E86D5 /* AppDelegate.swift in Sources */,
 				E6739B0F1C83BF330085DE9B /* CreatureListTableViewController.swift in Sources */,
 				E6739B141C83DB170085DE9B /* BeastsTableViewController.swift in Sources */,

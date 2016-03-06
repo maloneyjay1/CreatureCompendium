@@ -110,7 +110,7 @@ class GhostsAndOtherTableViewController: UITableViewController {
                 self.creatureSelection = Constants.sharedInstance.ghostsNonBeingAndUnknownNames()[selectedRow]
                 
                 GhostsAndOtherController.sharedInstance.retrieveAllLoreAndName(self.creatureSelection, completion: { (success) -> Void in
-                    GhostsAndOtherController.sharedInstance.retrieveImage(self.creatureSelection, index: 0, completion: { (success) -> Void in
+                    GhostsAndOtherController.sharedInstance.retrieveImage(self.creatureSelection, index: 1, completion: { (success) -> Void in
                         if success {
                             if success {
                                 GhostsOtherDetailViewController.sharedInstance.updateProps({ (success) -> Void in

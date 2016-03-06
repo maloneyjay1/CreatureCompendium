@@ -12,11 +12,18 @@ import Foundation
 
 class Intro: UIViewController {
 
-
     @IBOutlet weak var TextView: UITextView!
+    
+    var imageCount = Int()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ImageController.sharedInstance.returnImageArrayForCreature("Centaur") { (images) -> Void in
+            self.imageCount = images.count
+        }
+        
+        
         
         generalAlert(title: "Attention to Employees", message: "\(Constants.sharedInstance.ministryOfMagicUpdate())", actionTitle: "OK")
         
@@ -25,6 +32,8 @@ class Intro: UIViewController {
         TextView.contentOffset = CGPointMake(0, -TextView.contentSize.height)
         
     }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

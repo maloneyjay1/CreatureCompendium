@@ -29,10 +29,14 @@ class GhostsOtherDetailViewController: UIViewController {
                 print(creatureString)
                 self.name = name
                 print(name)
-                CreatureController.creatureImageObjectForNameAndIndex(searchTerm, index: imageIndex) { (creatureImageObject) -> Void in
-                    ImageController.sharedInstance.getUIImageFromURL(creatureImageObject, completion: { (image, imageType) -> Void in
-                        self.image = image
-                        print(image)
+                CreatureController.creatureImageURLForNameAndIndex(searchTerm, index: imageIndex) { (creatureImageObject) -> Void in
+                    ImageController.sharedInstance.getUIImageFromURL(creatureImageObject, completion: { (image, imageType, success) -> Void in
+                        if success {
+                            self.image = image
+                            print(image)
+                        } else {
+                            print("No Image.")
+                        }
                     })
                 }
             }

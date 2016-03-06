@@ -18,6 +18,9 @@ class CreatureController {
     var creatureLoreJSON = [String:AnyObject]()
     var creatureLoreJSONCollection = [[String:AnyObject]]()
     
+    var imageJSON = jsonDictionary()
+    var imageArray = jsonArray()
+    
     //Custom JSON dictionary and collection of dictionaries
     //CreatureImageJSON = [caption:src]
     var creatureImageString = ""
@@ -26,8 +29,10 @@ class CreatureController {
     
     var LoreArray = jsonArray()
     
+    var currentCreatureNetworkData = jsonDictionary()
     
-    //successful test
+    var currentCreatureImageUrlArray = [String]()
+    
     static func singleCreatureLoreObjectStringForIndexAndName(searchTerm:String, index:Int, completion:(cLoreSectionTitle:String, cLoreSectionText:String, cCreatureName:String, searchTerm:String) -> Void) {
         CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
             CreatureController.sharedInstance.constructLoreJSONArray(resultsData, completion: { (LoreArray, success, name) -> Void in
@@ -43,7 +48,6 @@ class CreatureController {
             })
         }
     }
-    
     
     
     static func allCreatureLoreForNameAsString(searchTerm:String, completion:(creatureString:String, name:String) -> Void) {
@@ -105,11 +109,11 @@ class CreatureController {
     }
     
     
-    static func creatureImageObjectForNameAndIndex(searchTerm:String, index:Int, completion:(creatureImageObject:String) -> Void) {
+    static func creatureImageURLForNameAndIndex(searchTerm:String, index:Int, completion:(creatureImageURL:String) -> Void) {
         dispatch_async(dispatch_get_main_queue()) {
             
             CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
-                CreatureController.sharedInstance.constructImageJSONArray(resultsData, completion: { (ImageJson, ImageArray) -> Void in
+                CreatureController.sharedInstance.constructImageJSONArray(resultsData, completion: { (ImageArray, success) -> Void in
                     if index < ImageArray.count {
                         if let json = ImageArray[index] as? jsonDictionary {
                             if let newImage = CreatureImage(imageJSON: json) {
@@ -117,18 +121,18 @@ class CreatureController {
                                 print(newImageURL)
                                 let imageURL = CreatureController.sharedInstance.urlFormatterForSecurity(newImageURL)
                                 print(imageURL)
-                                completion(creatureImageObject: imageURL)
+                                completion(creatureImageURL: imageURL)
                             } else {
                                 print("No Image")
-                                completion(creatureImageObject: "No creature image URL found.")
+                                completion(creatureImageURL: "No creature image URL found.")
                             }
                         } else {
                             print("No JSON")
-                            completion(creatureImageObject: "No creature image URL found.")
+                            completion(creatureImageURL: "No creature image URL found.")
                         }
                     } else {
                         print("Index Out of Range.")
-                        completion(creatureImageObject: "http://vignette3.wikia.nocookie.net/harrypotter/images/a/a1/Department_for_the_Regulation_and_Control_of_Magical_Creatures_logo.png/revision/latest?cb=20080319162035")
+                        completion(creatureImageURL: "http://vignette3.wikia.nocookie.net/harrypotter/images/a/a1/Department_for_the_Regulation_and_Control_of_Magical_Creatures_logo.png/revision/latest?cb=20080319162035")
                     }
                 })
             }
@@ -136,21 +140,50 @@ class CreatureController {
     }
     
     
-    //completes with array of image objects
-    static func creatureImageObjectArrayForName(searchTerm:String, completion:(creatureImageArray:[String]) -> Void) {
-        var creatureImageArray:[String] = []
+    //only complete with all results from constructImageJSONArray
+    func creatureImageUrlArrayForName(searchTerm:String, completion:(creatureImageUrlArray:[String], success: Bool) ->Void) {
+        self.currentCreatureImageUrlArray.removeAll()
         CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
-            CreatureController.sharedInstance.constructImageJSONArray(resultsData, completion: { (ImageJson, ImageArray) -> Void in
-                for n in ImageArray {
-                    if let json = n as? jsonDictionary {
-                        if let newImage = CreatureImage(imageJSON: json) {
-                            let imageURL = newImage.cImageURL
-                            let formattedURL = CreatureController.sharedInstance.urlFormatterForSecurity(imageURL)
-                            creatureImageArray.append(formattedURL)
+            CreatureController.sharedInstance.constructImageJSONArray(resultsData, completion: { (ImageArray, success) -> Void in
+                if success {
+                    var creatureImageArray = [String]()
+                    print("\(ImageArray.count)")
+                    for n in ImageArray {
+                        if let json = n as? jsonDictionary {
+                            if let newImage = CreatureImage(imageJSON: json) {
+                                let imageURL = newImage.cImageURL
+                                let formattedURL = CreatureController.sharedInstance.urlFormatterForSecurity(imageURL)
+                                print("\(formattedURL)")
+                                
+                                creatureImageArray.append(formattedURL)
+                                print("CreatureImageURL Array appended, has \(creatureImageArray.count)")
+                                self.currentCreatureImageUrlArray = creatureImageArray
+                                completion(creatureImageUrlArray: creatureImageArray, success: true)
+                            } else {
+                                print("No Image")
+                                completion(creatureImageUrlArray: creatureImageArray, success: false)
+                            }
+                        } else {
+                            print("No JSON")
+                            completion(creatureImageUrlArray: creatureImageArray, success: false)
                         }
                     }
+                } else {
+                    print("No URLs found.")
+                    completion(creatureImageUrlArray: [""], success: false)
                 }
-                completion(creatureImageArray: [])
+            })
+        }
+    }
+    
+    
+    func creatureImageDataObjectArrayForName(searchTerm:String, completion:(creatureImageArray:jsonArray) -> Void) {
+        self.imageArray.removeAll()
+        
+        CreatureController.retrieveCreatureNetworkJSON(searchTerm) { (resultsData) -> Void in
+            CreatureController.sharedInstance.constructImageJSONArray(resultsData, completion: { (ImageArray, success) -> Void in
+                self.imageArray = ImageArray
+                completion(creatureImageArray: ImageArray)
             })
         }
     }
@@ -158,22 +191,30 @@ class CreatureController {
     
     static func retrieveCreatureNetworkJSON(creature:String, completion:(resultsData:jsonDictionary) -> Void) {
         let baseURL = NetworkController.baseCreatureURLForSearch(creature)
-        NetworkController.dataAtURL(baseURL) { (resultData, json, success) -> Void in
-            if let itemsArray = json["items"] as? [[String:AnyObject]] {
-                for idDictionary in itemsArray {
-                    if let creatureIDFound = idDictionary["id"] {
-                        let creatureURL = NetworkController.creatureURLForID("\(creatureIDFound)")
-                        NetworkController.dataAtURL(creatureURL, completion: { (resultData, json, success) -> Void in
+        dispatch_async(dispatch_get_main_queue()) {
+            NetworkController.dataAtURL(baseURL) { (resultData, json, success) -> Void in
+                if let itemsArray = json["items"] as? [[String:AnyObject]] {
+                    for idDictionary in itemsArray {
+                        if let creatureIDFound = idDictionary["id"] {
+                            let creatureURL = NetworkController.creatureURLForID("\(creatureIDFound)")
+                            NetworkController.dataAtURL(creatureURL, completion: { (resultData, json, success) -> Void in
+                                print("Data retrieved.")
+                                completion(resultsData: json)
+                            })
+                        } else {
+                            print("No creatureID found.")
                             completion(resultsData: json)
-                        })
+                        }
                     }
+                } else {
+                    print("No Items Array found.")
+                    completion(resultsData: json)
                 }
             }
         }
     }
     
     
-    //UPDATE TO REMOVE TITLE?
     func constructLoreJSONArray(resultData:jsonDictionary, completion:(LoreArray:jsonArray, success:Bool, name:String) -> Void) {
         creatureLoreJSON.removeAll()
         creatureLoreJSONCollection.removeAll()
@@ -211,39 +252,61 @@ class CreatureController {
             print("No section found in this JSON.")
             completion(LoreArray: [[:]], success: false,name:"")
         }
-        
         self.LoreArray.removeAll()
         print(self.LoreArray)
         completion(LoreArray: creatureLoreJSONCollection, success: true, name: "\(nameTitle)")
     }
     
-    func constructImageJSONArray(resultData:jsonDictionary, completion:(ImageJson:jsonDictionary, ImageArray:jsonArray) -> Void) {
+    
+    //problem function, NEED TO COMPLETE ONLY IF EVERY ITEM IS PRESENT, OTHERWISE KEEP LOOPING
+    func constructImageJSONArray(resultData:jsonDictionary, completion:(ImageArray:jsonArray, success:Bool) -> Void) {
         creatureImageJSON.removeAll()
         creatureImageJSONCollection.removeAll()
-        
+        var counter = Int()
+       
         if let sectionsArray = resultData["sections"] as? jsonArray {
+            print("\(sectionsArray.count)")
             for n in sectionsArray {
+                counter += 1
+                print("\(counter)")
                 if let imageArray = n["images"] as? jsonArray {
+                    var currentImage = String()
                     for n in imageArray {
-                        print("\(imageArray.count)")
                         if let url = n["src"] as? String {
-                            if !url.isEmpty {
-                                creatureImageJSON = ["src":"\(url):"]
-                                let cURL = self.stringFormatter(url)
-                                
-                                
-                                creatureImageJSON.updateValue("\(cURL)", forKey: "src")
-                                creatureImageJSONCollection.append(creatureImageJSON)
-                                
+                            if url != currentImage {
+                                if !url.isEmpty {
+                                    
+                                    creatureImageJSON = ["src":"\(url):"]
+                                    let cURL = self.stringFormatter(url)
+                                    creatureImageJSON.updateValue("\(cURL)", forKey: "src")
+                                    print("\(creatureImageJSON)")
+                                    creatureImageJSONCollection.append(creatureImageJSON)
+                                    counter += 1
+                                    currentImage = url
+                                    print("creatureImageJSON appended")
+                                    if counter == sectionsArray.count {
+                                        print("All ImageJSON found.")
+                                        completion(ImageArray: creatureImageJSONCollection, success: true)
+                                    } else {
+                                        completion(ImageArray: creatureImageJSONCollection, success: false)
+                                    }
+                                }
+                            } else {
+                                print("No ImageJSON")
+//                                completion(ImageArray: creatureImageJSONCollection, success: false)
                             }
+                        } else {
+                            print("No image Array")
+//                            completion(ImageArray: creatureImageJSONCollection, success: false)
                         }
                     }
                 }
             }
+        } else {
+            print("No sections Array")
+//            completion(ImageArray: creatureImageJSONCollection, success: false)
         }
-        completion(ImageJson: creatureImageJSON, ImageArray: creatureImageJSONCollection)
     }
-    
 }
 
 extension CreatureController {

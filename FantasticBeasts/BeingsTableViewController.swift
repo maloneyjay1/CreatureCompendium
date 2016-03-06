@@ -107,7 +107,7 @@ class BeingsTableViewController: UITableViewController {
                 self.creatureSelection = Constants.sharedInstance.beingNames()[selectedRow]
                 
                 BeingController.sharedInstance.retrieveAllLoreAndName(self.creatureSelection, completion: { (success) -> Void in
-                    BeingController.sharedInstance.retrieveImage(self.creatureSelection, index: 0, completion: { (success) -> Void in
+                    BeingController.sharedInstance.retrieveImage(self.creatureSelection, index: 1, completion: { (success) -> Void in
                         if success {
                             if success {
                                 BeingsDetailViewController.sharedInstance.updateProps({ (success) -> Void in

@@ -54,6 +54,8 @@ class BeastsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("beastCell", forIndexPath: indexPath)
         
         let creature = beasts[indexPath.row]
+        
+        cell.backgroundColor = UIColor(patternImage: UIImage(named: "image118 2")!)
     
         cell.textLabel?.text = creature
         cell.textLabel?.font = UIFont(name: "Cairo", size: 15)
